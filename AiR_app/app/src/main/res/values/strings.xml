@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">AiR_app</string>
+
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="label_ok">OK</string>
+    <string name="alert_delete_user_title">Delete User?</string>
+    <string name="alert_delete_user_message">Are you sure you want to delete User?</string>
+    <string name="alert_delete_event_title">Delete Event?</string>
+    <string name="alert_delete_event_message">Are you sure you want to delete Event?</string>
+    <string name="field_required">This field is required</string>
+    <string name="start">start</string>
+    <string name="end">end</string>
+
+    <string name="hint_ip">HOST</string>
+    <string name="hint_port">PORT</string>
+    <string name="hint_subpage">subpage</string>
+
+    <string name="empty_login_data">request data cannot be empty</string>
+    <string name="refreshed">Successfully refreshed</string>
+    <string name="date_range_overlap">Selected date range overlap with existing ones in schedule</string>
+
+    <string name="send">SEND</string>
+    <string name="connecting">Waiting for respond…</string>
+    <string name="timed_out">Server is not responding</string>
+    <string name="languages">Languages</string>
+    <string name="about">About</string>
+    <string name="login">Login</string>
+    <string name="confirm">Confirm</string>
+    <string name="empty_fields">Please fill out all fields</string>
+    <string name="updated_successfully">Updated Successfully!</string>
+    <string name="delete">Delete</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_data">-</string>
+
+    <!--fragments titles-->
+    <string name="mainFragment">Main Page</string>
+    <string name="loginFragment">Login Page</string>
+    <string name="controlFragment">URL Request page</string>
+
+    <string name="make_request">make request</string>
+    <string name="respond_text">Respond:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

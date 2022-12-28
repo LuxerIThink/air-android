@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.air_app.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_controlFragment"
+            app:destination="@id/controlFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_measurementFragment"
+            app:destination="@id/measurementFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_ledFragment"
+            app:destination="@id/ledFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_tableFragment"
+            app:destination="@id/tableFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/controlFragment"
+        android:name="com.example.air_app.control.ControlFragment"
+        android:label="Request Page" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.air_app.menu.login.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/measurementFragment"
+        android:name="com.example.air_app.charts.MeasurementFragment"
+        android:label="MeasurementFragment" />
+    <fragment
+        android:id="@+id/ledFragment"
+        android:name="com.example.air_app.led.LedFragment"
+        android:label="LedFragment" />
+    <fragment
+        android:id="@+id/tableFragment"
+        android:name="com.example.air_app.table.TableFragment"
+        android:label="TableFragment" />
+</navigation>

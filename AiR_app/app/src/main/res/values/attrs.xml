@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="progressIndicatorColor" format="color" />
+    <attr name="drawerLayoutColor" format="color" />
+    <attr name="drawerLayoutItemTextColor" format="color" />
+    <attr name="textColor" format="color" />
+    <attr name="pickerBackgroundColor" format="color" />
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/drawable-v24/login.xml" value="0.1215" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/layout/control_fragment.xml" value="0.2" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/layout/login_fragment.xml" value="0.3569553805774278" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/layout/main_fragment.xml" value="0.25052083333333336" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/menu/delete_menu.xml" value="0.25052083333333336" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab5/app/src/main/res/menu/navdrawer_menu.xml" value="0.2" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/drawable/led_border.xml" value="0.108" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/drawable/led_view.xml" value="0.108" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/activity_main.xml" value="0.1712962962962963" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/fragment_table.xml" value="0.1712962962962963" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/led_fragment.xml" value="0.17037037037037037" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/login_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/main_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/measurement_view.xml" value="0.17037037037037037" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/measurements_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/layout/table_fragment.xml" value="0.17037037037037037" />
+        <entry key="..\:/Kamil_Koldunek/Nauka/VII_semestr_AiR/AiR/lab6/AiR_app/app/src/main/res/menu/navdrawer_menu.xml" value="0.17037037037037037" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
