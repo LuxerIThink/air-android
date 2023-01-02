@@ -19,53 +19,30 @@ package com.example.air_app
 import android.os.Handler
 import android.os.Looper
 
-/**
- * This is a class representing a timer that you can start or stop. The secondsCount outputs a count of
- * how many seconds since it started, every one second.
- *
- * -----
- *
- * Handler and Runnable are beyond the scope of this lesson. This is in part because they deal with
- * threading, which is a complex topic that will be covered in a later lesson.
- *
- * If you want to learn more now, you can take a look on the Android Developer documentation on
- * threading:
- *
- * https://developer.android.com/guide/components/processes-and-threads
- *
- */
 class MyTimer (var Tp: Long = 1000, var foo: (() -> Unit)? = null){
 
-    // The number of seconds counted since the timer started
     var Counter = 0
-    /**
-     * [Handler] is a class meant to process a queue of messages (known as [android.os.Message]s)
-     * or actions (known as [Runnable]s)
-     */
     private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
+    private var _running = false
+    val running: Boolean
+    get() = _running
 
 
     fun startTimer() {
-        // Create the runnable action, which prints out a log and increments the seconds counter
+        _running = true
         runnable = Runnable {
             Counter++
-            // postDelayed re-adds the action to the queue of actions the Handler is cycling
-            // through. The delayMillis param tells the handler to run the runnable in
-            // 1 second (1000ms)
             foo?.invoke()
             handler.postDelayed(runnable, Tp)
         }
 
-        // This is what initially starts the timer
         handler.postDelayed(runnable, Tp)
 
-        // Note that the Thread the handler runs on is determined by a class called Looper.
     }
 
     fun stopTimer() {
-        // Removes all pending posts of runnable from the handler's queue, effectively stopping the
-        // timer
+        _running = false
         handler.removeCallbacks(runnable)
     }
 }

@@ -10,10 +10,11 @@ package com.example.air_app.led
 
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 
 class LedDisplayModel {
-    val sizeX = 8 //!< Display horizontal size
-    val sizeY = 8 //!< Display vertical size
+    val sizeX = 8
+    val sizeY = 8
     private val model: Array<Array<LedModel?>> = Array<Array<LedModel?>>(sizeX) { arrayOfNulls<LedModel>(sizeY) }
 
 
@@ -30,18 +31,18 @@ class LedDisplayModel {
         }
     }
 
-    private fun indexToJsonArray(x: Int, y: Int): JSONArray {
-        val array = JSONArray()
+    private fun indexToJsonObject(x: Int, y: Int): JSONObject {
+        val json = JSONObject()
         try {
-            array.put(0, x)
-            array.put(1, y)
-            array.put(2, model[x][y]?.R ?: 0)
-            array.put(3, model[x][y]?.G ?: 0)
-            array.put(4, model[x][y]?.B ?: 0)
+            json.put("x", x)
+            json.put("y", y)
+            json.put("r", model[x][y]?.R ?: 0)
+            json.put("g", model[x][y]?.G ?: 0)
+            json.put("b", model[x][y]?.B ?: 0)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-        return array
+        return json
     }
 
     val controlJsonArray: JSONArray
@@ -52,7 +53,7 @@ class LedDisplayModel {
                 for (j in 0 until sizeY) {
                     if (model[i][j]!!.colorNotNull()) {
                         try {
-                            jsonArray.put(led_n, indexToJsonArray(i, j))
+                            jsonArray.put(led_n, indexToJsonObject(i, j))
                             led_n++
                         } catch (e: JSONException) {
                             e.printStackTrace()

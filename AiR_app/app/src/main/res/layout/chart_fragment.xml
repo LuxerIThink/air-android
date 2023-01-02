@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="measurementViewModel"
-            type="com.example.air_app.charts.MeasurementViewModel" />
+            name="chartViewModel"
+            type="com.example.air_app.charts.ChartViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Running"
-                    android:checked="@={measurementViewModel._running}"
+                    android:checked="@={chartViewModel._running}"
                     app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +58,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@+id/switch1"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:onCheckedChanged="@{measurementViewModel.onSplitTypeChanged}"
+                    android:onCheckedChanged="@{chartViewModel.onSplitTypeChanged}"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <RadioButton

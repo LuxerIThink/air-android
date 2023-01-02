@@ -16,5 +16,7 @@
         <!-- drawer layout color. -->
         <item name="drawerLayoutColor">@color/white</item>
         <item name="drawerLayoutItemTextColor">@color/black</item>
+
+        <item name="android:textColorTertiary">@color/black</item>
     </style>
 </resources>

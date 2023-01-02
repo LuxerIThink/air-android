@@ -10,6 +10,7 @@ import com.example.air_app.Event
 import com.example.air_app.data.User
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 
 
 class TableViewModel : ViewModel() {
@@ -37,7 +38,12 @@ class TableViewModel : ViewModel() {
                 }
 
                 override fun onResponse(response: JSONArray) {
-                    val rs = response.length()
+                    var jsonObject = JSONObject()
+                    try {
+                        jsonObject = response.getJSONObject(0)
+                    }catch (_: JSONException) { return }
+
+                    val rs = jsonObject.length()
                     val ms = measurements!!.size
                     val sizeDiff = ms - rs
                     // remove redundant measurements from list
@@ -49,7 +55,8 @@ class TableViewModel : ViewModel() {
                     for (i in 0 until rs) {
                         try {
                             /* get measurement model from JSON data */
-                            val measurement = MeasurementModel(response.getJSONObject(i))
+                            val key = jsonObject.names()?.getString(i)
+                            val measurement = MeasurementModel(key!!, jsonObject.getJSONObject(key!!))
 
                             /* update measurements list */if (i >= ms) {
                                 measurements!!.add(measurement.toVM())

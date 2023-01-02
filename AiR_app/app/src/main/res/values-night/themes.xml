@@ -16,5 +16,7 @@
         <!-- drawer layout color. -->
         <item name="drawerLayoutColor">@color/cyan_blue_p25</item>
         <item name="drawerLayoutItemTextColor">@color/white</item>
+
+        <item name="android:textColorTertiary">@color/white</item>
     </style>
 </resources>

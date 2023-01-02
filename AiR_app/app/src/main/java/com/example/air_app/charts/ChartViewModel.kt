@@ -23,7 +23,7 @@ import kotlin.math.ceil
 
 
 @SuppressLint("StaticFieldLeak")
-class MeasurementViewModel: ViewModel() {
+class ChartViewModel: ViewModel() {
     var requestIndicator = false
     var signal1 =  LineGraphSeries<DataPoint>()
     var signal2 =  LineGraphSeries<DataPoint>()
@@ -88,10 +88,16 @@ class MeasurementViewModel: ViewModel() {
         }
     }
     fun onSplitTypeChanged(radioGroup: RadioGroup?, id: Int) {
-        k = 0
-        signal1.resetData(arrayOf())
+        reset()
         currentName = getCurrentName(id)
     }
+
+    fun reset(){
+        k = 0
+        signal1.resetData(arrayOf())
+    }
+
+
     fun getCurrentName(id: Int): String? {
         when(id){
             R.id.radioButton->return "temperature"
@@ -106,16 +112,18 @@ class MeasurementViewModel: ViewModel() {
 
     fun getServerData(respond: String){
         var json: JSONArray = JSONArray()
+        var jsonObject = JSONObject()
         try {
             json = JSONArray(respond)
+            jsonObject = json.getJSONObject(0)
         }catch (_: JSONException) { return }
         var value: Double? = null
-        for (i in 0 until json.length()) {
+        for (i in 0 until jsonObject.length()) {
             try {
-                val item = json.getJSONObject(i)
-                if (currentName == item.getString("name")) {
-                    value = item.getString("value").toDouble()
-                    _unit.value = item.getString("unit")
+                val key = jsonObject.names()?.getString(i)
+                if (currentName == key) {
+                    value = jsonObject.getJSONObject(key!!).getDouble("value")
+                    _unit.value = jsonObject.getJSONObject(key!!).getString("unit")
                     signal1.title = currentName
                 }
             } catch (_: JSONException) { return }

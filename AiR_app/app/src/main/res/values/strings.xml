@@ -33,13 +33,15 @@
     <string name="refresh">Refresh</string>
     <string name="no_data">-</string>
 
+
+
     <!--fragments titles-->
     <string name="mainFragment">Main Page</string>
     <string name="loginFragment">Login Page</string>
-    <string name="controlFragment">URL Request page</string>
+    <string name="chartFragment">Charts</string>
+    <string name="ledFragment">Led control</string>
+    <string name="tableFragment">Data measurements</string>
 
     <string name="make_request">make request</string>
     <string name="respond_text">Respond:</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
