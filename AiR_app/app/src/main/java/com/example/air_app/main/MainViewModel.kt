@@ -3,7 +3,6 @@ package com.example.air_app.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.air_app.data.User
 import com.example.air_app.Event
 
 class MainViewModel : ViewModel() {

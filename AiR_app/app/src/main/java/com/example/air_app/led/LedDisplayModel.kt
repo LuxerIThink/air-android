@@ -1,11 +1,3 @@
-/**
- *
- * @file    LED Display Control Example/Model/LedDisplayModel.java
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: LED display data model - matrix of LEDs
- */
 package com.example.air_app.led
 
 import org.json.JSONArray
@@ -47,14 +39,14 @@ class LedDisplayModel {
 
     val controlJsonArray: JSONArray
         get() {
-            var led_n = 0
+            var ledN = 0
             val jsonArray = JSONArray()
             for (i in 0 until sizeX) {
                 for (j in 0 until sizeY) {
                     if (model[i][j]!!.colorNotNull()) {
                         try {
-                            jsonArray.put(led_n, indexToJsonObject(i, j))
-                            led_n++
+                            jsonArray.put(ledN, indexToJsonObject(i, j))
+                            ledN++
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }

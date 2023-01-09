@@ -21,10 +21,10 @@ class ChartFragment : Fragment() {
     private lateinit var binding: ChartFragmentBinding
     private lateinit var chart: GraphView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.chart_fragment,container,false)
-        chartViewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+        chartViewModel = ViewModelProvider(this)[ChartViewModel::class.java]
         binding.chartViewModel = chartViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -43,7 +43,7 @@ class ChartFragment : Fragment() {
             }
         }
 
-        ChartInit()
+        chartInit()
 
         binding.chartViewModel!!.running.observe(viewLifecycleOwner){
             if(it){
@@ -73,7 +73,7 @@ class ChartFragment : Fragment() {
         return binding.root
     }
 
-    private fun ChartInit() {
+    private fun chartInit() {
         // https://github.com/jjoe64/GraphView/wiki
         chart = binding.chart
         chart.addSeries(binding.chartViewModel!!.signal1)
@@ -84,7 +84,7 @@ class ChartFragment : Fragment() {
         //chart.viewport.setMaxX(10.0)
         chart.viewport.isScrollable = true
         chart.viewport.isYAxisBoundsManual = false
-        binding.chartViewModel!!.signal1.color = Color.RED
+        binding.chartViewModel!!.signal1.color = Color.BLUE
         chart.legendRenderer.isVisible = true
         chart.legendRenderer.align = LegendRenderer.LegendAlign.TOP
         chart.legendRenderer.textSize = 30f
@@ -94,10 +94,6 @@ class ChartFragment : Fragment() {
         chart.gridLabelRenderer.numHorizontalLabels = 9
         chart.gridLabelRenderer.numVerticalLabels = 7
         chart.gridLabelRenderer.padding = 35
-    }
-
-    private fun Space(n: Int): String? {
-        return String(CharArray(n)).replace('\u0000', ' ')
     }
 
     override fun onStart() {

@@ -1,9 +1,6 @@
 package com.example.air_app
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -33,18 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+        return if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
-            return true
+            true
         }else{
-            return NavigationUI.navigateUp(navController, drawerLayout)
+            NavigationUI.navigateUp(navController, drawerLayout)
         }
-    }
-
-
-    fun intentToLocaleSettings(item: MenuItem) {
-        val i = Intent(Settings.ACTION_LOCALE_SETTINGS)
-        startActivity(i)
-        drawerLayout.closeDrawer(GravityCompat.START)
     }
 }

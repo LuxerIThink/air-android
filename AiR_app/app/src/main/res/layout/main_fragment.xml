@@ -21,21 +21,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() ->mainViewModel.onEventNavigateToChart()}"
-            android:text="chart page" />
+            android:text="@string/charts" />
 
         <Button
             android:id="@+id/led_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() ->mainViewModel.onEventNavigateToLed()}"
-            android:text="led page" />
+            android:text="@string/led" />
 
         <Button
             android:id="@+id/table_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() ->mainViewModel.onEventNavigateToTable()}"
-            android:text="table page" />
+            android:text="@string/table" />
 
     </LinearLayout>
 </layout>

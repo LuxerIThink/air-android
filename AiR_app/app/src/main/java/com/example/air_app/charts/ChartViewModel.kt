@@ -10,7 +10,7 @@ import com.example.air_app.Event
 import com.example.air_app.MyTimer
 import com.example.air_app.R
 import com.example.air_app.data.User
-import com.example.air_app.server.Client
+import com.example.air_app.client.Client
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import kotlinx.coroutines.Dispatchers
@@ -24,35 +24,34 @@ import kotlin.math.ceil
 
 @SuppressLint("StaticFieldLeak")
 class ChartViewModel: ViewModel() {
-    var requestIndicator = false
+    private var requestIndicator = false
     var signal1 =  LineGraphSeries<DataPoint>()
-    var signal2 =  LineGraphSeries<DataPoint>()
     private var k = 0
     val sampleTime = 0.1
     var sampleMax = 100000
     var timer = MyTimer((1000*sampleTime).toLong(),::getServerData0)
-    var currentName: String? = null
+    private var currentName: String? = null
     private val _makeAlert = MutableLiveData<Event<String>>()
     val makeAlert : LiveData<Event<String>>
         get() = _makeAlert
 
-    var _minX = MutableLiveData<Double>()
+    private var _minX = MutableLiveData<Double>()
     val minX : LiveData<Double>
         get() = _minX
 
-    var _maxX = MutableLiveData<Double>()
+    private var _maxX = MutableLiveData<Double>()
     val maxX : LiveData<Double>
         get() = _maxX
 
-    var _unit = MutableLiveData<String>()
+    private var _unit = MutableLiveData<String>()
     val unit : LiveData<String>
         get() = _unit
 
-    var _running = MutableLiveData<Boolean>(true)
+    var _running = MutableLiveData(true)
     val running : LiveData<Boolean>
         get() = _running
 
-    val client = Client()
+    private val client = Client()
 
     fun loadUser(user: User){
         client.ip = user.ip
@@ -63,7 +62,7 @@ class ChartViewModel: ViewModel() {
         client.subpage = "/measurements.php"
     }
 
-    fun requestHelper(onSuccess: ((respond: String) -> Unit), message: String? = null){
+    private fun requestHelper(onSuccess: ((respond: String) -> Unit), message: String? = null){
         if(!requestIndicator) {
             requestIndicator = true
             viewModelScope.launch(Dispatchers.IO) {
@@ -82,7 +81,7 @@ class ChartViewModel: ViewModel() {
             }
         }
     }
-    fun getServerData0(){
+    private fun getServerData0(){
         if (currentName != null) {
             requestHelper(::getServerData)
         }
@@ -98,7 +97,7 @@ class ChartViewModel: ViewModel() {
     }
 
 
-    fun getCurrentName(id: Int): String? {
+    private fun getCurrentName(id: Int): String? {
         when(id){
             R.id.radioButton->return "temperature"
             R.id.radioButton2->return "pressure"
@@ -110,8 +109,8 @@ class ChartViewModel: ViewModel() {
         return null
     }
 
-    fun getServerData(respond: String){
-        var json: JSONArray = JSONArray()
+    private fun getServerData(respond: String){
+        var json = JSONArray()
         var jsonObject = JSONObject()
         try {
             json = JSONArray(respond)
@@ -123,7 +122,7 @@ class ChartViewModel: ViewModel() {
                 val key = jsonObject.names()?.getString(i)
                 if (currentName == key) {
                     value = jsonObject.getJSONObject(key!!).getDouble("value")
-                    _unit.value = jsonObject.getJSONObject(key!!).getString("unit")
+                    _unit.value = jsonObject.getJSONObject(key).getString("unit")
                     signal1.title = currentName
                 }
             } catch (_: JSONException) { return }
@@ -134,9 +133,9 @@ class ChartViewModel: ViewModel() {
             k++
 
             if(x>10) {
-                val newx = ceil((x+5)/5)*5
-                _maxX.value = newx
-                _minX.value = ceil(newx - 15.0)
+                val newX = ceil((x+5)/5)*5
+                _maxX.value = newX
+                _minX.value = ceil(newX - 15.0)
             }else{
                 _minX.value = 0.0
                 _maxX.value = 15.0

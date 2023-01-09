@@ -35,10 +35,10 @@ class LedFragment : Fragment() {
             : EditText? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.led_fragment,container,false)
-        ledViewModel = ViewModelProvider(this).get(LedViewModel::class.java)
+        ledViewModel = ViewModelProvider(this)[LedViewModel::class.java]
         binding.ledViewModel = ledViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.sendBtn.setOnClickListener { sendControlRequest() }
@@ -142,12 +142,12 @@ class LedFragment : Fragment() {
     }
 
 
-    private fun ledIndexToTag(x: Int, y: Int): String? {
-        return "LED" + Integer.toString(x) + Integer.toString(y)
+    private fun ledIndexToTag(x: Int, y: Int): String {
+        return "LED$x$y"
     }
 
 
-    private fun addLedIndicatorToTableLayout(x: Int, y: Int): RelativeLayout? {
+    private fun addLedIndicatorToTableLayout(x: Int, y: Int): RelativeLayout {
 
         val border = RelativeLayout(requireContext())
 
@@ -195,13 +195,16 @@ class LedFragment : Fragment() {
 
 
     private fun setLedViewColor(v: View?, color: Int) {
-        val backgroundColor = v!!.background
-        if (backgroundColor is ShapeDrawable) {
-            backgroundColor.paint.color = color
-        } else if (backgroundColor is GradientDrawable) {
-            backgroundColor.setColor(color)
-        } else if (backgroundColor is ColorDrawable) {
-            backgroundColor.color = color
+        when (val backgroundColor = v!!.background) {
+            is ShapeDrawable -> {
+                backgroundColor.paint.color = color
+            }
+            is GradientDrawable -> {
+                backgroundColor.setColor(color)
+            }
+            is ColorDrawable -> {
+                backgroundColor.color = color
+            }
         }
     }
 
@@ -214,7 +217,7 @@ class LedFragment : Fragment() {
     }
 
 
-    fun clearDisplay() {
+    private fun clearDisplay() {
 
         val tb = binding.ledTable
         var ledInd: View?
@@ -231,11 +234,10 @@ class LedFragment : Fragment() {
 
         binding.ledViewModel!!.client.method = "PUT"
         binding.ledViewModel!!.requestHelper({}, disp?.controlJsonArray.toString())
-        //server.putControlRequest(disp?.controlJsonArray)
     }
 
 
-    fun sendControlRequest() {
+    private fun sendControlRequest() {
         binding.ledViewModel!!.client.method = "PUT"
         binding.ledViewModel!!.requestHelper({}, disp?.controlJsonArray.toString())
     }

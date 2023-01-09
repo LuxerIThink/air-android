@@ -1,6 +1,5 @@
 package com.example.air_app.table
 
-import com.example.air_app.iterator
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -16,7 +15,7 @@ class MeasurementModel {
 
     constructor(key: String, data: JSONObject) {
         mData = ""
-        var values = mutableListOf<String>()
+        val values = mutableListOf<String>()
         try {
             mName = key
             for (currentKey in data.keys()) {

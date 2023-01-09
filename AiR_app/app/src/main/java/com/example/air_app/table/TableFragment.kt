@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.air_app.R
 import com.example.air_app.data.User
-import com.example.air_app.databinding.LedFragmentBinding
 import com.example.air_app.databinding.TableFragmentBinding
-import com.example.air_app.led.LedViewModel
 
 
 class TableFragment : Fragment() {
@@ -21,10 +19,10 @@ class TableFragment : Fragment() {
     private lateinit var tableViewModel: TableViewModel
     private lateinit var binding: TableFragmentBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.table_fragment,container,false)
-        tableViewModel = ViewModelProvider(this).get(TableViewModel::class.java)
+        tableViewModel = ViewModelProvider(this)[TableViewModel::class.java]
         binding.tableViewModel = tableViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.tableViewModel!!.Init(requireContext())

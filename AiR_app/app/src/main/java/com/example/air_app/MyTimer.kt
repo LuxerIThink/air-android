@@ -19,9 +19,9 @@ package com.example.air_app
 import android.os.Handler
 import android.os.Looper
 
-class MyTimer (var Tp: Long = 1000, var foo: (() -> Unit)? = null){
+class MyTimer (private var Tp: Long = 1000, private var foo: (() -> Unit)? = null){
 
-    var Counter = 0
+    private var counter = 0
     private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
     private var _running = false
@@ -32,7 +32,7 @@ class MyTimer (var Tp: Long = 1000, var foo: (() -> Unit)? = null){
     fun startTimer() {
         _running = true
         runnable = Runnable {
-            Counter++
+            counter++
             foo?.invoke()
             handler.postDelayed(runnable, Tp)
         }

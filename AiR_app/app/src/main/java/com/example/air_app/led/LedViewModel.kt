@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.air_app.Event
 import com.example.air_app.data.User
-import com.example.air_app.server.Client
+import com.example.air_app.client.Client
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

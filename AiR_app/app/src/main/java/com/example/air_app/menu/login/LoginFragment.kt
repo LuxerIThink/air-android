@@ -22,10 +22,10 @@ class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.login_fragment,container,false)
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         binding.loginViewModel = loginViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -42,13 +42,14 @@ class LoginFragment : Fragment() {
 
 
 
-        binding.loginViewModel!!.eventConfirm.observe(viewLifecycleOwner, Observer { event ->
+        binding.loginViewModel!!.eventConfirm.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let {
                 updateUser()
-                val inputMethodManager = requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                val inputMethodManager =
+                    requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(requireView().windowToken, 0)
             }
-        })
+        }
 
         binding.editTextTextIP.doOnTextChanged { text, _, _, _ ->
             binding.loginViewModel!!.ip.value = text.toString()

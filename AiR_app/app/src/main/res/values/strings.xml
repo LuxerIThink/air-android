@@ -39,8 +39,12 @@
     <string name="mainFragment">Main Page</string>
     <string name="loginFragment">Login Page</string>
     <string name="chartFragment">Charts</string>
-    <string name="ledFragment">Led control</string>
+    <string name="ledFragment">LED control</string>
     <string name="tableFragment">Data measurements</string>
+
+    <string name="charts">Charts</string>
+    <string name="led">LED</string>
+    <string name="table">Table</string>
 
     <string name="make_request">make request</string>
     <string name="respond_text">Respond:</string>

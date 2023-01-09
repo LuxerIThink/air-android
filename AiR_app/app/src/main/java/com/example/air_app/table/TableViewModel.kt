@@ -56,13 +56,13 @@ class TableViewModel : ViewModel() {
                         try {
                             /* get measurement model from JSON data */
                             val key = jsonObject.names()?.getString(i)
-                            val measurement = MeasurementModel(key!!, jsonObject.getJSONObject(key!!))
+                            val measurement = MeasurementModel(key!!, jsonObject.getJSONObject(key))
 
                             /* update measurements list */if (i >= ms) {
                                 measurements!!.add(measurement.toVM())
                                 adapter!!.notifyItemInserted(i)
                             } else {
-                                measurements!!.set(i, measurement.toVM())
+                                measurements!![i] = measurement.toVM()
                                 adapter!!.notifyItemChanged(i)
                             }
                         } catch (e: JSONException) {

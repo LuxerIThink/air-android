@@ -17,17 +17,3 @@ fun <T> MutableLiveData<T>.postNotifyObserver() {
 
 operator fun JSONArray.iterator(): Iterator<JSONObject>
         = (0 until length()).asSequence().map { get(it) as JSONObject }.iterator()
-
-@BindingAdapter("android:visibility")
-fun setVisibility(view: View, value: Boolean) {
-    view.visibility = if (value) View.VISIBLE else View.GONE
-}
-
-@BindingAdapter("android:visibility")
-fun setVisibility(view: View, value: Int) {
-    when (value){
-        0 -> view.visibility = View.GONE
-        1 -> view.visibility = View.VISIBLE
-        2 ->view.visibility = View.INVISIBLE
-    }
-}
