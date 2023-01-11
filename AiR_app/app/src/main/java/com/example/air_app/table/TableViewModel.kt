@@ -24,7 +24,7 @@ class TableViewModel : ViewModel() {
         get() = _makeAlert
 
     fun loadUser(user: User){
-        server!!.url = "http://${user.ip}:${user.port}/measurements.php"
+        server!!.url = "http://${user.ip}:${user.port}/get_data"
     }
 
     fun Init(context: Context) {

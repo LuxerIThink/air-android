@@ -1,6 +1,5 @@
 package com.example.air_app.charts
 
-import android.annotation.SuppressLint
 import android.widget.RadioGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,7 +21,6 @@ import org.json.JSONObject
 import kotlin.math.ceil
 
 
-@SuppressLint("StaticFieldLeak")
 class ChartViewModel: ViewModel() {
     private var requestIndicator = false
     var signal1 =  LineGraphSeries<DataPoint>()
@@ -59,7 +57,7 @@ class ChartViewModel: ViewModel() {
     }
 
     init {
-        client.subpage = "/measurements.php"
+        client.subpage = "/get_data"
     }
 
     private fun requestHelper(onSuccess: ((respond: String) -> Unit), message: String? = null){

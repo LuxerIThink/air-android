@@ -25,7 +25,7 @@ class LedViewModel : ViewModel() {
     }
 
     init {
-        client.subpage = "led_display.php"
+        client.subpage = "/put_led"
     }
 
     fun requestHelper(onSuccess: ((respond: String) -> Unit), message: String? = null){
